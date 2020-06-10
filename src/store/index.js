@@ -5,6 +5,9 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    money: 0,
+    coffee: 0,
+    bagels: 0,
   },
   mutations: {
   },

@@ -1,17 +1,31 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h2>Bob's Bagels</h2>
+    <h4>${{ money }}</h4>
+    <Coffee />
+    <Bagels />
+    <CashRegister />
+    <Automation />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Coffee from './components/Coffee'
+import Bagels from './components/Bagels'
+import CashRegister from './components/CashRegister'
+import Automation from './components/Automation'
 export default {
   name: 'App',
+  computed: {
+    money() {
+      return this.$store.state.money
+    }
+  },
   components: {
-    HelloWorld
+    Coffee,
+    Bagels,
+    CashRegister,
+    Automation
   }
 }
 </script>
