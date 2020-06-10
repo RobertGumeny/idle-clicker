@@ -61,12 +61,17 @@ export default new Vuex.Store({
       state.coffee.qty = 0;
       state.coffee.perClick = 1;
       state.coffee.automated = false;
+      state.coffee.salary = 50;
       state.bagels.qty = 0;
       state.bagels.perClick = 1;
       state.bagels.automated = false;
+      state.bagels.unlocked = false;
+      state.bagels.salary = 150;
       state.pancakes.qty = 0;
       state.pancakes.perClick = 1;
       state.pancakes.automated = false;
+      state.pancakes.unlocked = false;
+      state.pancakes.salary = 250;
     }
   },
   actions: {

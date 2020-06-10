@@ -44,6 +44,12 @@ export default {
     makePancake() {
       this.$store.commit("addPancake");
     },
+    unlockBagels() {
+      if (this.money >= this.pancakes.unlockPrice) {
+        this.$store.state.money -= this.pancakes.unlockPrice
+        this.pancakes.unlocked = true;
+      }
+    },
     hirePancakeManager() {
       if (this.money >= this.pancakes.salary) {
         this.$store.state.money -= this.pancakes.salary;
