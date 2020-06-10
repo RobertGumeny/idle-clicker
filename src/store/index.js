@@ -1,5 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import VuexPersist from 'vuex-persist'
+
+const vuexPersist = new VuexPersist({
+  key: 'idle-clicker',
+  storage: window.localStorage
+})
 
 Vue.use(Vuex)
 
@@ -32,6 +38,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    addMoney(state, qty) {
+      state.money += qty;
+    },
     addCoffee(state) {
       state.coffee.qty += state.coffee.perClick;
     },
@@ -46,5 +55,6 @@ export default new Vuex.Store({
 
   },
   modules: {
-  }
+  },
+  plugins: [vuexPersist.plugin]
 })

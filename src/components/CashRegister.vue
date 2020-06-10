@@ -53,19 +53,22 @@ export default {
   methods: {
     sellCoffee() {
       if (this.coffees.qty > 0) {
-        this.$store.state.money += this.coffees.qty * this.coffees.price;
+        let cashToAdd = this.coffees.qty * this.coffees.price;
+        this.$store.commit("addMoney", cashToAdd)
         this.$store.state.coffee.qty = 0;
       }
     },
     sellBagels() {
       if (this.bagels.qty > 0) {
-        this.$store.state.money += this.bagels.qty * this.bagels.price;
+        let cashToAdd = this.bagels.qty * this.bagels.price;
+        this.$store.commit("addMoney", cashToAdd)
         this.$store.state.bagels.qty = 0;
       }
     },
     sellPancakes() {
       if (this.pancakes.qty > 0) {
-        this.$store.state.money += this.pancakes.qty * this.pancakes.price;
+        let cashToAdd = this.pancakes.qty * this.pancakes.price;
+        this.$store.commit("addMoney", cashToAdd)
         this.$store.state.pancakes.qty = 0;
       }
     },
