@@ -9,7 +9,7 @@
           Unlock Price:
           <span class="text-success">${{ pancakes.unlockPrice }}</span>
         </div>
-        <button class="btn btn-sm btn-success">Unlock</button>
+        <button class="btn btn-sm btn-success" @click="unlockPancakes()">Unlock</button>
       </div>
       <div v-if="pancakes.unlocked">
         <h6 class="card-title mb-0" v-if="pancakes.automated">Manager Automating</h6>
@@ -18,7 +18,7 @@
         <button
           class="btn btn-sm btn-primary"
           @click="hirePancakeManager()"
-          v-if="!coffees.automated"
+          v-if="!pancakes.automated"
         >Hire Manager</button>
       </div>
     </div>
@@ -44,7 +44,7 @@ export default {
     makePancake() {
       this.$store.commit("addPancake");
     },
-    unlockBagels() {
+    unlockPancakes() {
       if (this.money >= this.pancakes.unlockPrice) {
         this.$store.state.money -= this.pancakes.unlockPrice
         this.pancakes.unlocked = true;
