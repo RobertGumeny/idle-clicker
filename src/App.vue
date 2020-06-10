@@ -1,19 +1,32 @@
 <template>
   <div id="app">
-    <h2>Bob's Bagels</h2>
-    <h4>${{ money }}</h4>
-    <Coffee />
-    <Bagels />
-    <CashRegister />
-    <Automation />
+    <div class="main container-fluid">
+      <div class="row justify-content-center">
+        <h2>Bob's Bagels</h2>
+      </div>
+      <div class="row justify-content-center">
+        <h5>Total Cash: ${{ money }}</h5>
+      </div>
+      <CashRegister />
+      <div class="row justify-content-center">
+        <Coffee />
+        <Bagels />
+        <Pancakes />
+      </div>
+    </div>
+    <div class="footer">
+      Icons made by
+      <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from
+      <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+    </div>
   </div>
 </template>
 
 <script>
 import Coffee from './components/Coffee'
 import Bagels from './components/Bagels'
+import Pancakes from './components/Pancakes'
 import CashRegister from './components/CashRegister'
-import Automation from './components/Automation'
 export default {
   name: 'App',
   computed: {
@@ -24,19 +37,21 @@ export default {
   components: {
     Coffee,
     Bagels,
+    Pancakes,
     CashRegister,
-    Automation
   }
 }
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Nunito", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+.main {
+  height: 95vh;
 }
 </style>

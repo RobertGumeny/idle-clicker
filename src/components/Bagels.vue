@@ -1,7 +1,14 @@
 <template>
-  <div class="bagel">
-    Bagels in Stock: {{ bagels }}
-    <button @click="makeBagel()">Make Bagel</button>
+  <div class="bagel card col-md-3 p-1">
+    <img src="../assets/img/bagel-xl.png" alt="Bagels" class="card-img-top img-fluid" />
+    <div class="card-body">
+      <h6 class="card-title">Price: ${{ bagels.price }}</h6>
+      <h5 class="card-title">Bagels in Stock: {{ bagels.qty }}</h5>
+      <h6 class="card-title mb-0" v-if="bagels.automated">Manager Automating</h6>
+      <div class="mt-0 mb-2 small" v-if="!bagels.automated">Manager Cost: ${{ bagels.salary }}</div>
+      <button class="btn btn-sm btn-secondary mr-1" @click="makeBagel()">Make Bagel</button>
+      <button class="btn btn-sm btn-danger" @click="hireManager()">Hire Manager</button>
+    </div>
   </div>
 </template>
 
@@ -19,7 +26,7 @@ export default {
   },
   methods: {
     makeBagel() {
-      this.$store.state.bagels++;
+      this.$store.commit("addBagel");
     }
   },
   components: {}
@@ -28,4 +35,8 @@ export default {
 
 
 <style scoped>
+.card-img-top {
+  width: 50%;
+  margin: 25px auto;
+}
 </style>
