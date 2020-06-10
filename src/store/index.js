@@ -18,7 +18,7 @@ export default new Vuex.Store({
       perClick: 1,
       automated: false,
       salary: 100,
-      autoInterval: 2500
+      autoInterval: 1000
     },
     bagels: {
       price: 3,
@@ -26,7 +26,7 @@ export default new Vuex.Store({
       perClick: 1,
       automated: false,
       salary: 300,
-      autoInterval: 5000
+      autoInterval: 3000
     },
     pancakes: {
       price: 5,
@@ -34,7 +34,7 @@ export default new Vuex.Store({
       perClick: 1,
       automated: false,
       salary: 500,
-      autoInterval: 7500
+      autoInterval: 5000
     }
   },
   mutations: {

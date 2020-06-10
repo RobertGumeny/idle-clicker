@@ -1,5 +1,5 @@
 <template>
-  <div class="coffee card col-md-3 p-1">
+  <div class="coffee card col-md-3 p-1 mr-1">
     <img src="../assets/img/coffee-xl.png" alt class="card-img-top img-fluid" />
     <div class="card-body">
       <h6 class="card-title">Price: ${{ coffees.price }}</h6>
@@ -7,7 +7,7 @@
       <h6 class="card-title mb-0" v-if="coffees.automated">Manager Automating</h6>
       <div class="mt-0 mb-2 small" v-if="!coffees.automated">Manager Cost: ${{ coffees.salary }}</div>
       <button class="btn btn-sm btn-secondary mr-1" @click="pourCoffee()">Pour Coffee</button>
-      <button class="btn btn-sm btn-danger" @click="hireManager()">Hire Manager</button>
+      <button class="btn btn-sm btn-danger" @click="hireCoffeeManager()">Hire Manager</button>
     </div>
   </div>
 </template>
@@ -31,7 +31,7 @@ export default {
     pourCoffee() {
       this.$store.commit("addCoffee")
     },
-    hireManager() {
+    hireCoffeeManager() {
       if (this.money >= this.coffees.salary) {
         this.$store.state.money -= this.coffees.salary;
         this.$store.state.coffee.automated = true;
@@ -39,7 +39,7 @@ export default {
           this.$store.commit("addCoffee")
         }, this.coffees.autoInterval)
       }
-    },
+    }
   },
   components: {}
 }

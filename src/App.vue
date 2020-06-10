@@ -50,6 +50,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  background-color: #fffaf1;
 }
 .main {
   height: 95vh;

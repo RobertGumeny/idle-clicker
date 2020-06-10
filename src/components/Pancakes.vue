@@ -7,7 +7,7 @@
       <h6 class="card-title mb-0" v-if="pancakes.automated">Manager Automating</h6>
       <div class="mt-0 mb-2 small" v-if="!pancakes.automated">Manager Cost: ${{ pancakes.salary }}</div>
       <button class="btn btn-sm btn-secondary mr-1" @click="makePancake()">Make Pancake</button>
-      <button class="btn btn-sm btn-danger" @click="hireManager()">Hire Manager</button>
+      <button class="btn btn-sm btn-danger" @click="hirePancakeManager()">Hire Manager</button>
     </div>
   </div>
 </template>
@@ -22,11 +22,23 @@ export default {
   computed: {
     pancakes() {
       return this.$store.state.pancakes
+    },
+    money() {
+      return this.$store.state.money;
     }
   },
   methods: {
     makePancake() {
       this.$store.commit("addPancake");
+    },
+    hirePancakeManager() {
+      if (this.money >= this.pancakes.salary) {
+        this.$store.state.money -= this.pancakes.salary;
+        this.$store.state.pancakes.automated = true;
+        setInterval(() => {
+          this.$store.commit("addPancake")
+        }, this.pancakes.autoInterval)
+      }
     }
   },
   components: {}
