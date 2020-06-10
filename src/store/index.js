@@ -17,7 +17,9 @@ export default new Vuex.Store({
       qty: 0,
       perClick: 1,
       automated: false,
-      salary: 100,
+      unlocked: true,
+      unlockPrice: 0,
+      salary: 50,
       autoInterval: 1000
     },
     bagels: {
@@ -25,7 +27,9 @@ export default new Vuex.Store({
       qty: 0,
       perClick: 1,
       automated: false,
-      salary: 300,
+      unlocked: false,
+      unlockPrice: 150,
+      salary: 150,
       autoInterval: 3000
     },
     pancakes: {
@@ -33,7 +37,9 @@ export default new Vuex.Store({
       qty: 0,
       perClick: 1,
       automated: false,
-      salary: 500,
+      unlocked: false,
+      unlockPrice: 500,
+      salary: 250,
       autoInterval: 5000
     }
   },
@@ -49,6 +55,18 @@ export default new Vuex.Store({
     },
     addPancake(state) {
       state.pancakes.qty += state.pancakes.perClick;
+    },
+    resetGame(state) {
+      state.money = 0;
+      state.coffee.qty = 0;
+      state.coffee.perClick = 1;
+      state.coffee.automated = false;
+      state.bagels.qty = 0;
+      state.bagels.perClick = 1;
+      state.bagels.automated = false;
+      state.pancakes.qty = 0;
+      state.pancakes.perClick = 1;
+      state.pancakes.automated = false;
     }
   },
   actions: {

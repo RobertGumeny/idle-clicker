@@ -13,6 +13,9 @@
         <Bagels />
         <Pancakes />
       </div>
+      <div class="row mt-4 justify-content-center">
+        <button class="btn btn-sm btn-danger" @click="restartGame()">Restart Game</button>
+      </div>
     </div>
     <div class="footer">
       Icons made by
@@ -34,6 +37,11 @@ export default {
       return this.$store.state.money
     }
   },
+  methods: {
+    restartGame() {
+      this.$store.commit("resetGame")
+    }
+  },
   components: {
     Coffee,
     Bagels,
@@ -50,7 +58,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  background-color: #fffaf1;
+  background-color: #fff5e3;
 }
 .main {
   height: 95vh;

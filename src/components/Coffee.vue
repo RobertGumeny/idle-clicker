@@ -7,7 +7,11 @@
       <h6 class="card-title mb-0" v-if="coffees.automated">Manager Automating</h6>
       <div class="mt-0 mb-2 small" v-if="!coffees.automated">Manager Cost: ${{ coffees.salary }}</div>
       <button class="btn btn-sm btn-secondary mr-1" @click="pourCoffee()">Pour Coffee</button>
-      <button class="btn btn-sm btn-danger" @click="hireCoffeeManager()">Hire Manager</button>
+      <button
+        class="btn btn-sm btn-primary"
+        @click="hireCoffeeManager()"
+        v-if="!coffees.automated"
+      >Hire Manager</button>
     </div>
   </div>
 </template>
@@ -35,9 +39,12 @@ export default {
       if (this.money >= this.coffees.salary) {
         this.$store.state.money -= this.coffees.salary;
         this.$store.state.coffee.automated = true;
-        setInterval(() => {
+        let cInterval = setInterval(() => {
           this.$store.commit("addCoffee")
         }, this.coffees.autoInterval)
+      }
+      if (!this.$store.state.coffee.automated) {
+        clearInterval(cInterval);
       }
     }
   },
